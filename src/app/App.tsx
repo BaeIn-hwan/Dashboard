@@ -7,7 +7,7 @@ function App() {
   const [tabValue, setTabValue] = useState<string>("2");
 
   const handleTabChange = (value: string) => setTabValue(value);
-
+  console.log(2222);
   return (
     <SplitLayout
       fixedSide="left"
