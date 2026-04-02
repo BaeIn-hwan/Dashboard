@@ -1,1 +1,1 @@
-export { DashboardPage } from "./ui/DashboardPage.tsx";
+export { DashboardPage } from "@/pages/dashboard/ui/DashboardPage";

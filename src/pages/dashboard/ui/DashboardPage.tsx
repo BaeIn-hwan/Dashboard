@@ -1,7 +1,28 @@
-/**
- * 대시보드 페이지 (FSD Pages 레이어)
- * 블록 팔레트·캔버스·결과 패널을 배치하는 메인 화면
- */
+import { useState } from "react";
+
+import type { CanvasBlock } from "@/entities/block";
+
+import { ThreeColumnLayout } from "@/shared/ui/Layout";
+import { BlockPalette } from "@/widgets/block-palette";
+import { Canvas } from "@/widgets/canvas";
+import { ResultPanel } from "@/widgets/result-panel";
+
 export function DashboardPage() {
-  return <div data-testid="dashboard-page">Dashboard</div>;
+  const [blocks, setBlocks] = useState<CanvasBlock[]>([]);
+  const [bgColor, setBgColor] = useState<"white" | "black">("white");
+
+  return (
+    <ThreeColumnLayout
+      left={<BlockPalette />}
+      center={
+        <Canvas
+          blocks={blocks}
+          bgColor={bgColor}
+          onBlocksChange={setBlocks}
+          onBgColorChange={setBgColor}
+        />
+      }
+      right={<ResultPanel blocks={blocks} bgColor={bgColor} />}
+    />
+  );
 }
